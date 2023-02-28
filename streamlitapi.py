@@ -1,11 +1,14 @@
 import streamlit as st
 import pandas as pd
+import sklearn
 
 #model = pickle.load(open('C:/Users/hp/Desktop/ML Project/random_forest_model.pkl', 'rb'))
 
-import joblib
-
-model = joblib.load('modeltobeused.sav') # Load your model using joblib
+@st.cache # This function will be cached
+def load_model():
+    # Load your model here
+    model = sklearn.load_model('modeltobeused')
+    return model
 
 
 def main():
